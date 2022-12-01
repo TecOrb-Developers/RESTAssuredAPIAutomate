@@ -14,4 +14,5 @@
 ``` 
  git clone https://github.com/TecOrb-Developers/RESTAssuredAPIAutomate.git
 ```
-- Resolve all gradle dependencies.
+- Resolve all maven dependencies
+
