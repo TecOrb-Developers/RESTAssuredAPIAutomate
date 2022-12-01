@@ -1,0 +1,26 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "My-Apple1.local",
+    "children" : [ {
+      "name" : "1219@My-Apple1.local.main(1)",
+      "children" : [ {
+        "name" : "testLoginAPI",
+        "uid" : "dca5bc8a674725fd",
+        "parentUid" : "55aa775cf45b4c55d34d6ff5795ef426",
+        "status" : "passed",
+        "time" : {
+          "start" : 1669617900922,
+          "stop" : 1669617904762,
+          "duration" : 3840
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "55aa775cf45b4c55d34d6ff5795ef426"
+    } ],
+    "uid" : "4c5d31c5f5940a27ce1f5eab35f24f50"
+  } ]
+}

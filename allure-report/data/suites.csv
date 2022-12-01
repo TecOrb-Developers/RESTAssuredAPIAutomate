@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Nov 28 12:15:00 IST 2022","Mon Nov 28 12:15:04 IST 2022","3840","Default suite","Default test","com.api.Tests.IntegrationTest","com.api.Tests.IntegrationTest","testLoginAPI","testLoginAPI",""

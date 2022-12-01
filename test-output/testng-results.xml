@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="13218" started-at="2022-12-01T16:29:29 IST" finished-at="2022-12-01T16:29:42 IST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="13218" started-at="2022-12-01T16:29:29 IST" finished-at="2022-12-01T16:29:42 IST">
+      <class name="com.api.Tests.LoginAPITest">
+        <test-method status="PASS" signature="commonRequestConfiguration()[pri:0, instance:com.api.Tests.LoginAPITest@245b4bdc]" name="commonRequestConfiguration" is-config="true" duration-ms="496" started-at="2022-12-01T16:29:29 IST" finished-at="2022-12-01T16:29:29 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- commonRequestConfiguration -->
+        <test-method status="PASS" signature="testLoginAPI()[pri:0, instance:com.api.Tests.LoginAPITest@245b4bdc]" name="testLoginAPI" duration-ms="12601" started-at="2022-12-01T16:29:29 IST" finished-at="2022-12-01T16:29:42 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginAPI -->
+      </class> <!-- com.api.Tests.LoginAPITest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

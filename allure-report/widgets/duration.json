@@ -1,0 +1,11 @@
+[ {
+  "uid" : "dca5bc8a674725fd",
+  "name" : "testLoginAPI",
+  "time" : {
+    "start" : 1669617900922,
+    "stop" : 1669617904762,
+    "duration" : 3840
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
