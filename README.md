@@ -52,6 +52,42 @@ We have used RestAssured RequestSpecBuilder as a basis for our API test framewor
 - Actions - This package contains API action class(Get data path from json response) and Assert action class(To verify response with output)
 - Tests - It has 2 classes BaseTest and Test. BaseTest class contains all the wrapper methods over RestAssured for creating API request And Test class contains all the test classes which uses testNG as test framework.
 
+## Usage
+### RequestPayload class
+
+```
+public String getLoginPayload() {
+		LearnAutism la = new LearnAutism();
+		la.setEmail(ExcelReadUtil.getDataFromExcelSheet("TestData", "email", "value"));
+		la.setPassword(ExcelReadUtil.getDataFromExcelSheet("TestData", "password", "value"));
+
+		return gson.toJson(la);
+	}
+```
+
+### BaseTest class
+```
+protected void commonRequestConfiguration() {		
+		repoSpec = new RequestSpecBuilder().setBaseUri(configfile.loadProperties("base_uri"))
+				.setConfig(newConfig().logConfig(logConfig().blacklistHeader("Authorization ")))
+				.build().log().all();	 
+	}
+
+```
+### LoginAPITest class
+```
+public void testLoginAPI() {
+		Response response = RestAssured.given().spec(repoSpec).header("Content-Type", "application/json").when()
+				.body(payload.getLoginPayload()).post(APIConstant.login_API);
+
+		String expResponse = "User created successfully";
+		String actResponse = apiAction.getDataFromJsonPath(response, "message");
+		assertAction.verifyOKStatusCode(response);
+		assertAction.verifyResponseBody(expResponse, actResponse, "Response not received");
+	}
+ 
+ ```
+
 ## Acknowledgments
 - [RestAssured Official Docs](https://rest-assured.io/)
 - [TestNG Docs](https://testng.org/doc/)
