@@ -30,12 +30,7 @@ public class BaseTest {
 		
 		repoSpec = new RequestSpecBuilder().setBaseUri(configfile.loadProperties("base_uri"))
 				.setConfig(newConfig().logConfig(logConfig().blacklistHeader("Authorization ")))
-				.build().log().all();
-		
-		
-//		repoSpec = new RequestSpecBuilder().setBaseUri(cr.loadProperties("base_uri"))					
-//					.setContentType(ContentType.JSON).log(LogDetail.ALL).build() ;
-		 
+				.build().log().all();	 
 	}
 
 }
