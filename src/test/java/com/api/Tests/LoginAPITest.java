@@ -30,9 +30,23 @@ public class LoginAPITest extends BaseTest {
 		assertAction.verifyResponseBody(expResponse, actResponse, "Response not received");
 	}
 	
+	@Test
+	public void testGuestLoginAPI() {
+
+		Response response = RestAssured.given().spec(repoSpec)
+				.headers("deviceType", "ios" , "timeZone", "Asia/Kolkata").when()
+				.get(APIConstant.guestLogin_API);
+
+		String expResponse = "Guest Created successfully";
+		String actResponse = apiAction.getDataFromJsonPath(response, "message");
+		
+	//	assertAction.verifyCreateStatusCode(response);
+		assertAction.verifyOKStatusCode(response);
+		assertAction.verifyResponseBody(expResponse, actResponse, "Response not received");
 	
 	
 	
+	}
 	
 	
 
