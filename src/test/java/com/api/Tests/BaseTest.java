@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 
 import com.api.Actions.APIAction;
 import com.api.Actions.AssertAction;
-import com.api.Payloads.RequestPayload;
+import com.api.Payloads.LoginRequestPayload;
 import com.api.Utilities.ConfigReader;
 
 import io.restassured.builder.RequestSpecBuilder;
@@ -15,10 +15,12 @@ import io.restassured.specification.RequestSpecification;
 
 public class BaseTest {
 	
-	protected RequestSpecification repoSpec;
+	protected static RequestSpecification repoSpec;
+	public static String accessToken = "";
+	public static String guestToken = "";
 	
 	public ConfigReader configfile = new ConfigReader();
-	RequestPayload payload = new RequestPayload();
+	LoginRequestPayload payload = new LoginRequestPayload();
 	protected AssertAction assertAction = new AssertAction();
 	protected APIAction apiAction = new APIAction();
 

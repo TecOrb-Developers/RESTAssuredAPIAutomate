@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("jsonschema2pojo")
-public class LearnAutism {
+public class Login {
 
 	@SerializedName("email")
 	@Expose
