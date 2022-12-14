@@ -8,7 +8,7 @@ import io.restassured.response.Response;
 
 public class LoginAPITest extends BaseTest {
 
-	@Test
+//	@Test
 	public void testLoginAPI() {
 
 //		String responseName = RestAssured.given().log().all().baseUri("https://api.github.com/")
@@ -20,7 +20,9 @@ public class LoginAPITest extends BaseTest {
 //				.post("api/v1/login").then().log().all().assertThat().statusCode(201).extract().jsonPath().get("name");
 
 		Response response = RestAssured.given().spec(repoSpec).header("Content-Type", "application/json").when()
-				.body(payload.getLoginPayload()).post(APIConstant.login_API);
+				.body(payload.getLoginPayload()).post(APIConstant.LOGIN);
+		
+		guestToken = response.jsonPath().get("token");
 
 		String expResponse = "User created successfully";
 		String actResponse = apiAction.getDataFromJsonPath(response, "message");
@@ -35,8 +37,10 @@ public class LoginAPITest extends BaseTest {
 
 		Response response = RestAssured.given().spec(repoSpec)
 				.headers("deviceType", "ios" , "timeZone", "Asia/Kolkata").when()
-				.get(APIConstant.guestLogin_API);
-
+				.get(APIConstant.GUEST_LOGIN);
+		
+		guestToken = response.jsonPath().get("token");
+		System.out.println(response.asPrettyString());
 		String expResponse = "Guest Created successfully";
 		String actResponse = apiAction.getDataFromJsonPath(response, "message");
 		
