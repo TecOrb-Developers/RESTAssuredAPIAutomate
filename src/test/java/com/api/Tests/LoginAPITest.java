@@ -1,5 +1,7 @@
 package com.api.Tests;
 
+import java.util.Map;
+
 import org.testng.annotations.Test;
 import com.api.Endpoints.APIConstant;
 
@@ -8,8 +10,8 @@ import io.restassured.response.Response;
 
 public class LoginAPITest extends BaseTest {
 
-//	@Test
-	public void testLoginAPI() {
+	@Test
+	public void testUserLoginAPI() {
 
 //		String responseName = RestAssured.given().log().all().baseUri("https://api.github.com/")
 //				.header("Authorization", "token 723867cc2d52bbe 1f5d9d@c2ce44fb793 d57d096 ").when()
@@ -22,17 +24,21 @@ public class LoginAPITest extends BaseTest {
 		Response response = RestAssured.given().spec(repoSpec).header("Content-Type", "application/json").when()
 				.body(payload.getLoginPayload()).post(APIConstant.LOGIN);
 		
-		guestToken = response.jsonPath().get("token");
+	//	if the response returns an array and we want to extract the record
+		Map<String, String> user = response.jsonPath().getMap("user");	
+		accessToken = user.get("accessToken");
+		System.out.println("Token: "+accessToken);
 
 		String expResponse = "User created successfully";
 		String actResponse = apiAction.getDataFromJsonPath(response, "message");
+		System.out.println(response.asPrettyString());
 		
 	//	assertAction.verifyCreateStatusCode(response);
 		assertAction.verifyOKStatusCode(response);
 		assertAction.verifyResponseBody(expResponse, actResponse, "Response not received");
 	}
 	
-	@Test
+//	@Test
 	public void testGuestLoginAPI() {
 
 		Response response = RestAssured.given().spec(repoSpec)
@@ -40,6 +46,7 @@ public class LoginAPITest extends BaseTest {
 				.get(APIConstant.GUEST_LOGIN);
 		
 		guestToken = response.jsonPath().get("token");
+		System.out.println("Token: "+guestToken);
 		System.out.println(response.asPrettyString());
 		String expResponse = "Guest Created successfully";
 		String actResponse = apiAction.getDataFromJsonPath(response, "message");

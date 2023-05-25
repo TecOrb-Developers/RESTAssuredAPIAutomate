@@ -5,8 +5,7 @@
     <classes>
       <class name="com.api.Tests.HomeAPITest">
         <methods>
-          <include name="init"/>
-          <include name="testHomeAPI"/>
+          <include name="testHomeAPI_AsUser"/>
           <include name="commonRequestConfiguration"/>
         </methods>
       </class> <!-- com.api.Tests.HomeAPITest -->
