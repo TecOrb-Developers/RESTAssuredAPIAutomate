@@ -18,8 +18,8 @@ public class HomeAPITest extends BaseTest {
 //		System.out.println("345");
 //	}
 	
-	@Test
-	public void testHomeAPI() {
+	@Test(description = "Login in home API using guest token")
+	public void testHomeAPI_AsGuest() {
 		LoginAPITest login = new LoginAPITest();
 		
 		login.testGuestLoginAPI();
@@ -33,9 +33,26 @@ public class HomeAPITest extends BaseTest {
 		String actResponse = apiAction.getDataFromJsonPath(response, "message");
 
 		assertAction.verifyOKStatusCode(response);
-		assertAction.verifyResponseBody(expResponse, actResponse, "Home API response is not fetched");
+		assertAction.verifyResponseBody(actResponse, expResponse, "Home API response is not fetched");
 	
+	}
 	
+	@Test(description = "Login in home API using access token")
+	public void testHomeAPI_AsUser() {
+		LoginAPITest login = new LoginAPITest();
+		
+		login.testUserLoginAPI();
+
+		Response response = RestAssured.given().spec(repoSpec)
+				.headers("sessionToken", accessToken , "timeZone", "Asia/Kolkata")
+				.get(APIConstant.HOME);
+		
+		//	System.out.println(response.asPrettyString());		
+		String expResponse = "Home page data fetched successfully";
+		String actResponse = apiAction.getDataFromJsonPath(response, "message");
+
+		assertAction.verifyOKStatusCode(response);
+		assertAction.verifyResponseBody(actResponse, expResponse, "Home API response is not fetched");
 	
 	}
 
